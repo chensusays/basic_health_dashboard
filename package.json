@@ -1,0 +1,13 @@
+{
+  "name": "basic_health_dashboard",
+  "version": "1.0.0",
+  "description": "React, TypeScript, Vite, Python, FastAPI",
+  "scripts": {
+    "start": "concurrently --names 'CLIENT,SERVER' --prefix-colors 'blue,yellow' --kill-others \"npm run start:client\" \"npm run start:server\"",
+    "start:client": "cd client && npm run dev",
+    "start:server": "cd server && make server.start"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.2"
+  }
+}

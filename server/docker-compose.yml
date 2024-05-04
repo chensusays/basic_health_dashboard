@@ -17,9 +17,18 @@ services:
   dbdata:
     image: busybox
     volumes:
-      - /var/lib/postgresql/data
+      - /data/postgresql/pgdata
   db:
-    image: postgres:9.4
+    env_file:
+      - .env
+    image: postgres:16
+    user: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - PGUSER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB}
+    restart: always
     volumes_from:
       - dbdata
 
@@ -39,4 +48,4 @@ services:
     command: python -m pytest test/
 
   testdb:
-    image: postgres:9.4
+    image: postgres:16

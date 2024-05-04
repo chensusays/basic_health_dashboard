@@ -1,0 +1,77 @@
+Create an patient based on the sent information
+---
+tags:
+  - patient
+parameters:
+  - name: name
+    in: path
+    type: string
+    description: the full name of the patient
+  - name: first_name
+    in: path
+    type: string
+    description: the first name of the patient
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        age:
+          type: integer
+          description: The age of the patient
+        height:
+          type: integer
+          description: The height of the patient
+        weight:
+          type: integer
+          description: The weight of the patient
+        gender:
+          type: string
+          description: The gender of the patient
+        medication:
+          type: object
+          description: The medication of the patient
+        body_temperatures:
+          type: object
+          description: The body temperatures of the patient
+
+responses:
+  200:
+    description: The patient was successfully created
+    schema:
+      example:
+        patient:
+          name: Doe
+          first_name: John
+          age: 30
+          height: 123
+          weight: 234
+          gender: male
+          medication: [
+            {
+              "name": "Medication 7",
+              "dosage": "53mg",
+              "start_date": "2023-08-10",
+              "end_date": "2023-08-29"
+            },
+            {
+              "name": "Medication 8",
+              "dosage": "34mg",
+              "start_date": "2023-05-12",
+              "end_date": "2023-06-02"
+            }
+          ]
+          body_temperatures: [
+            {
+              "date": "2023-12-08",
+              "temperature": 38
+            },
+            {
+              "date": "2023-12-07",
+              "temperature": 37.6
+            },
+            {
+              "date": "2023-12-06",
+              "temperature": 36.2
+            }
+          ]

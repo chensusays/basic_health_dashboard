@@ -13,7 +13,7 @@ server.bash: ## Connect to server to lauch commands
 server.daemon: ## Start daemon server in its docker container
 	docker-compose up -d server
 
-server.stop: ## Start server in its docker container
+server.stop: ## Stop server in its docker container
 	docker-compose stop
 
 server.logs: ## Display server logs

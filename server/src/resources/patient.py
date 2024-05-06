@@ -27,18 +27,18 @@ class PatientResource(Resource):
         Argument("height", location="json", required=True, help="The height of the patient."),
         Argument("weight", location="json", required=True, help="The weight of the patient."),
         Argument("gender", location="json", required=True, help="The gender of the patient."),
-        Argument("medication", location="json", required=False, help="The medications of the patient."),
+        Argument("medications", location="json", required=False, help="The medications of the patient."),
         Argument("body_temperatures", location="json", required=False, help="The historical body temperatures of the patient.")
     )
     @swag_from("../swagger/patient/POST.yml")
     def post(name, first_name, age,
             height, weight, gender,
-            medication=None, body_temperatures=None):
+            medications=None, body_temperatures=None):
         """ Create an patient based on the sent information """
         patient = PatientRepository.create(
             name=name, first_name=first_name, age=age,
             height=height, weight=weight, gender=gender,
-            medication=medication, body_temperatures=body_temperatures
+            medications=medications, body_temperatures=body_temperatures
         )
         return jsonify({"patient": patient.json})
 
@@ -48,17 +48,17 @@ class PatientResource(Resource):
         Argument("height", location="json", required=True, help="The height of the patient."),
         Argument("weight", location="json", required=True, help="The weight of the patient."),
         Argument("gender", location="json", required=True, help="The gender of the patient."),
-        Argument("medication", location="json", required=False, help="The medications of the patient."),
+        Argument("medications", location="json", required=False, help="The medications of the patient."),
         Argument("body_temperatures", location="json", required=False, help="The historical body temperatures of the patient.")
     )
     @swag_from("../swagger/patient/PUT.yml")
     def put(name, first_name, age,
             height, weight, gender,
-            medication=None, body_temperatures=None):
+            medications=None, body_temperatures=None):
         """ Update an patient based on the sent information """
         repository = PatientRepository()
         patient = repository.update(
             name=name, first_name=first_name, age=age,
             height=height, weight=weight, gender=gender,
-            medication=medication, body_temperatures=body_temperatures)
+            medications=medications, body_temperatures=body_temperatures)
         return jsonify({"patient": patient.json})

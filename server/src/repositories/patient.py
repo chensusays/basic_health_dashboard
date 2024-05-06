@@ -8,21 +8,23 @@ class PatientRepository:
     
     def update(self, name, first_name, age=None,
                  height=None, weight=None, gender=None,
-                 medication=None, body_temperatures=None):
+                 medications=None, body_temperatures=None):
         patient = self.get(name, first_name)
         patient.age = age
         patient.height = height
         patient.weight = weight
         patient.gender = gender
-        patient.medication = medication
+        patient.medications = medications
         patient.body_temperatures = body_temperatures
+
+        return patient.save()
 
     @staticmethod
     def create(name, first_name, age=None,
                  height=None, weight=None, gender=None,
-                 medication=None, body_temperatures=None):
+                 medications=None, body_temperatures=None):
         patient = Patient(name=name, first_name=first_name, age=age,
                  height=height, weight=weight, gender=gender,
-                 medication=medication, body_temperatures=body_temperatures)
+                 medications=medications, body_temperatures=body_temperatures)
         
         return patient.save()

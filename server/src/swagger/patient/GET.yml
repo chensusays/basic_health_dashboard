@@ -23,7 +23,7 @@ responses:
           height: 123
           weight: 234
           gender: male
-          medication: [
+          medications: [
             {
               "name": "Medication 7",
               "dosage": "53mg",

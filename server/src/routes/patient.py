@@ -8,5 +8,5 @@ from resources import PatientResource
 
 PATIENT_BLUEPRINT = Blueprint("patient", __name__)
 Api(PATIENT_BLUEPRINT).add_resource(
-    PatientResource, "/user/<string:name>/<string:first_name>"
+    PatientResource, "/patient/<string:name>/<string:first_name>"
 )

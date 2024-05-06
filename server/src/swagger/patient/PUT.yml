@@ -28,9 +28,9 @@ parameters:
         gender:
           type: string
           description: The gender of the patient
-        medication:
+        medications:
           type: object
-          description: The medication of the patient
+          description: The medications of the patient
         body_temperatures:
           type: object
           description: The body temperatures of the patient
@@ -47,7 +47,7 @@ responses:
           height: 123
           weight: 234
           gender: male
-          medication: [
+          medications: [
             {
               "name": "Medication 7",
               "dosage": "53mg",

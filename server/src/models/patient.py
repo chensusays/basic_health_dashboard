@@ -15,12 +15,12 @@ class Patient(db.Model, BaseModel, metaclass=MetaBaseModel):
 
     def __init__(self, name, first_name, age=None,
                  height=None, weight=None, gender=None,
-                 medication=None, body_temperatures=None):
+                 medications=None, body_temperatures=None):
         self.name = name
         self.first_name = first_name
         self.age = age
         self.height = height
         self.weight = weight
         self.gender = gender
-        self.medications = medication
+        self.medications = medications
         self. body_temperatures = body_temperatures

@@ -8,6 +8,10 @@
     "start:server": "cd server && make server.start"
   },
   "devDependencies": {
-    "concurrently": "^6.2.2"
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "concurrently": "^6.2.2",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1"
   }
 }

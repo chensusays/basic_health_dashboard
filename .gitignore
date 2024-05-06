@@ -185,3 +185,7 @@ cython_debug/
 
 
 .vscode/
+
+node_modules
+.vite
+/client/node_modules/

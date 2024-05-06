@@ -6,10 +6,16 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    tsconfigRootDir: "."
   },
+  plugins: [
+    "@typescript-eslint",
+    "import"
+  ],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/strict',
@@ -18,14 +24,25 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    "no-use-before-define": "error",
-    "no-unused-vars": "error",
-    "indent": ["error", 2],
-    "react/react-in-jsx-scope": "off",
+    'no-use-before-define': 'error',
+    'no-unused-vars': 'error',
+    indent: ['error', 2],
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
   overrides: [

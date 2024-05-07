@@ -26,8 +26,9 @@
       "@Config/*": ["./src/Config/*"],
       "@Reducers/*": ["./src/Services/Reducers/*"],
       "@Services/*": ["./src/Services/*"],
+      "@Styles/*": ["./src/Styles/*"],
     }
   },
-  "include": ["src", "./src/*", "./src/**/*", "./src/**/*.ts", "./src/**/*.tsx"],
+  "include": ["src", "./src/*", "./src/**/*", "./src/**/*.ts", "./src/**/*.tsx", "./**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

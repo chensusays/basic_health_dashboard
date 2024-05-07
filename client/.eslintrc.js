@@ -22,11 +22,12 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:prettier/recommended',
+    'prettier-plugin-tailwindcss' // MUST come last
   ],
   rules: {
     'no-use-before-define': 'error',
     'no-unused-vars': 'error',
-    indent: ['error', 2],
+    indent: ['error', 4],
     'react/react-in-jsx-scope': 'off',
   },
   settings: {

@@ -1,3 +1,4 @@
+from flask_cors import CORS
 from flask_migrate import Migrate
 from flasgger import Swagger
 from flask import Flask
@@ -15,14 +16,15 @@ from models import db
 
 def create_app():
     app = Flask(__name__)
-
+    CORS(app, origins='http://localhost:5173')
+    app.config['CORS_HEADERS'] = 'Content-Type'
     app.config["SWAGGER"] = {
         "swagger_version": "2.0",
         "title": "Application",
         "specs": [
             {
-                "version": "0.0.1",
-                "title": "Application",
+                "version": "1.0.0",
+                "title": "Basic Health Dashboard API",
                 "endpoint": "spec",
                 "route": "/application/spec",
                 "rule_filter": lambda rule: True,  # all in

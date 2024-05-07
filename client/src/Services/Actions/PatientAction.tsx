@@ -1,33 +1,41 @@
 import axios from 'axios';
+import { Dispatch } from 'redux';
+import { Patient } from 'src/types';
 
-export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
-export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
-export const fetchDataRequest = () => ({
-  type: FETCH_DATA_REQUEST,
-});
+export enum ActionTypes {
+  FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST',
+  FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS',
+  FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE',
+}
 
-export const fetchDataSuccess = data => ({
-  type: FETCH_DATA_SUCCESS,
-  payload: data,
-});
+interface FetchDataRequestAction {
+  type: ActionTypes.FETCH_DATA_REQUEST;
+}
 
-export const fetchDataFailure = error => ({
-  type: FETCH_DATA_FAILURE,
-  payload: error,
-});
+interface FetchDataSuccessAction {
+  type: ActionTypes.FETCH_DATA_SUCCESS;
+  payload: Array<Patient>;
+}
+
+interface FetchDataFailureAction {
+  type: ActionTypes.FETCH_DATA_FAILURE;
+  payload: string;
+}
+
+export type Action = FetchDataRequestAction | FetchDataSuccessAction | FetchDataFailureAction;
+
 
 export const fetchData = () => {
-  return dispatch => {
-    dispatch(fetchDataRequest());
-    axios
-      .get('https://api.example.com/data')
-      .then(response => {
-        dispatch(fetchDataSuccess(response.data));
-      })
-      .catch(error => {
-        dispatch(fetchDataFailure(error.message));
-      });
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionTypes.FETCH_DATA_REQUEST });
+
+    try {
+      const response = await axios.get(VITE_API_URL + "/patients");
+      dispatch({ type: ActionTypes.FETCH_DATA_SUCCESS, payload: response.data });
+    } catch (error: any) {
+      dispatch({ type: ActionTypes.FETCH_DATA_FAILURE, payload: error.message });
+    }
   };
 };

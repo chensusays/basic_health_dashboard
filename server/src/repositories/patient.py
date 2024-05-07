@@ -3,6 +3,10 @@ from models import Patient
 class PatientRepository:
 
     @staticmethod
+    def get_all():
+        return Patient.query.all()
+
+    @staticmethod
     def get(name, first_name):
         return Patient.query.filter_by(name=name, first_name=first_name).one()
     

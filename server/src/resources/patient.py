@@ -62,3 +62,11 @@ class PatientResource(Resource):
             height=height, weight=weight, gender=gender,
             medications=medications, body_temperatures=body_temperatures)
         return jsonify({"patient": patient.json})
+
+
+class PatientsResource(Resource):
+    @staticmethod
+    @swag_from("../swagger/patients/GET.yml")
+    def get():
+        patients = PatientRepository.get_all()
+        return jsonify([p.json for p in patients])

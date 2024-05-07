@@ -1,8 +1,19 @@
+from dataclasses import dataclass
+from sqlalchemy import JSON
 from . import db
 from .abc import BaseModel, MetaBaseModel
 
+@dataclass
 class Patient(db.Model, BaseModel, metaclass=MetaBaseModel):
     __tablename__ = "patient"
+    name = str
+    first_name = str
+    age = int
+    height = int
+    weight = int
+    gender = str
+    medications = JSON
+    body_temperatures = JSON
 
     name = db.Column(db.String(300), primary_key=True)
     first_name = db.Column(db.String(300), primary_key=True)
@@ -23,4 +34,4 @@ class Patient(db.Model, BaseModel, metaclass=MetaBaseModel):
         self.weight = weight
         self.gender = gender
         self.medications = medications
-        self. body_temperatures = body_temperatures
+        self.body_temperatures = body_temperatures
